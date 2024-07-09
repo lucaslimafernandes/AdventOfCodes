@@ -11,22 +11,26 @@ import (
 
 const INPUT = "https://adventofcode.com/2023/day/1/input"
 
+// Soma: 55172
 func main() {
 
 	fmt.Println("2023 - Day 01 #lucaslimafernandes")
 
+	var values []int
 	items, _ := readFile()
 
 	for _, v := range items {
 
-		n1, n2, err := pega(v)
+		n, err := pega(v)
 		if err != nil {
 			log.Fatalln(err)
 		}
-		fmt.Printf("%v %v\n", n1, n2)
-		fmt.Println(n1 + n2)
+		fmt.Printf("%v\n", n)
+
+		values = append(values, n)
 	}
 
+	fmt.Printf("Soma: %v ", soma(values))
 }
 
 func readFile() ([]string, error) {
@@ -34,6 +38,7 @@ func readFile() ([]string, error) {
 	var res []string
 
 	r, err := os.Open("2023/day01/input.txt")
+	// r, err := os.Open("2023/day01/test.txt")
 	if err != nil {
 		log.Println(err)
 	}
@@ -45,10 +50,10 @@ func readFile() ([]string, error) {
 
 	for i := 0; scanner.Scan(); i++ {
 		// DEBUG
-		if i < 2 {
-			fmt.Println(scanner.Text())
-			res = append(res, scanner.Text())
-		}
+		// if i < 2 {
+		fmt.Println(scanner.Text())
+		res = append(res, scanner.Text())
+		// }
 
 	}
 
@@ -70,10 +75,11 @@ func reverse(s string) string {
 
 }
 
-func pega(s string) (int, int, error) {
+func pega(s string) (int, error) {
 
 	var n1 int
 	var n2 int
+	var n int
 
 	reversed := reverse(s)
 
@@ -91,6 +97,19 @@ func pega(s string) (int, int, error) {
 		}
 	}
 
-	return n1, n2, nil
+	n, _ = strconv.Atoi(fmt.Sprintf("%v%v", n1, n2))
 
+	return n, nil
+
+}
+
+func soma(s []int) int {
+
+	var sum int
+
+	for _, v := range s {
+		sum = sum + v
+	}
+
+	return sum
 }
