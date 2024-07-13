@@ -48,7 +48,17 @@ zoneight234
 7pqrstsixteen
 In this example, the calibration values are 29, 83, 13, 24, 42, 14, and 76. Adding these together produces 281.
 
-What is the sum of all of the calibration values?
+What is the sum of all of the calibration values? 54925
+
+That's the right answer! You are one gold star closer to restoring snow operations.
+
+You have completed Day 1!
+
+2023 - Day 01 #lucaslimafernandes
+Part 1
+Soma: 55172 
+Part 2
+Soma: 54925
 
 
 
