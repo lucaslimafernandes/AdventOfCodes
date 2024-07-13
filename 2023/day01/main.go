@@ -9,8 +9,6 @@ import (
 	"github.com/lucaslimafernandes/AdventOfCodes/2023/day01/utils"
 )
 
-const INPUT = "https://adventofcode.com/2023/day/1/input"
-
 // Soma: 55172
 func main() {
 
