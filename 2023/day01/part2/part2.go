@@ -32,15 +32,11 @@ var mr = map[string]int{
 	"enin":  9,
 }
 
-// Erro ao ler a linha 10 cbcvd9
-// panic: runtime error: slice bounds out of range [:7] with length 6
-
 func Pega2(s string) (int, error) {
 
 	var n1 int
 	var n2 int
 	var n int
-	// var temp string
 
 	reversed := utils.Reverse(s)
 
@@ -59,7 +55,6 @@ func Pega2(s string) (int, error) {
 					continue
 				}
 
-				// fmt.Println(s[i1 : len(key)+i1])
 				v, ok := m[s[i1:len(key)+i1]]
 				if ok {
 					// fmt.Printf("é texto: %v \t %v\n", s, v)
@@ -80,7 +75,6 @@ func Pega2(s string) (int, error) {
 
 		if unicode.IsDigit(char2) {
 			v, _ := strconv.Atoi(string(char2))
-			// fmt.Printf("é numb: %v \t %v\n", reversed, v)
 			n2 = v
 
 		} else {
@@ -93,7 +87,6 @@ func Pega2(s string) (int, error) {
 
 				v, ok := mr[reversed[i2:len(key2)+i2]]
 				if ok {
-					// fmt.Printf("é texto: %v \t %v\n", reversed, v)
 					n2 = v
 					break
 				}
