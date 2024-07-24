@@ -115,4 +115,6 @@ For each game, find the minimum set of cubes that must have been present. What i
 2023 - Day 02 #lucaslimafernandes
 Part 1
 Soma: 2169
+Part 2
+Soma: 60948
 
