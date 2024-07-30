@@ -23,11 +23,9 @@ type poss struct {
 var symb []sym
 var sposs []poss
 
-func Game1(s [][]string) []sym {
+func SymbolsIdentifier(s [][]string) []sym {
 
 	// symb = make(map[int]map[int]string)
-
-	fmt.Println(symb)
 
 	fmt.Println(s)
 
@@ -65,15 +63,13 @@ func Game1(s [][]string) []sym {
 			}
 		}
 	}
-
-	fmt.Println(symb)
-
+	fmt.Println("SYMB", symb)
 	return symb
 
 }
 
 // Ver se as posições acima são digitos
-func Game2(s []sym, ss [][]string) []poss {
+func PossibilitiesIdentifier(s []sym, ss [][]string) []poss {
 
 	// var r, c int
 
@@ -85,19 +81,31 @@ func Game2(s []sym, ss [][]string) []poss {
 			// fmt.Println("R:", v.Row, "C:", v.Col)
 			// fmt.Println(ss[v.Row][v.Col])
 			// fmt.Println(string(ss[v.Row][0][v.Col]))
-			// r = v.Row
-			// c = v.Col
 			// fmt.Println(r, c)
 			for tr := -1; tr <= 1; tr++ {
+				inRow := false
 				for tc := -1; tc <= 1; tc++ {
 
+					fmt.Println(v.Row)
 					if v.Row+tr < 0 || v.Col+tc < 0 {
+						if inRow {
+							sposs = append(sposs, poss{v.Row + tr, v.Col + tc})
+						} else {
+							continue
+						}
+					}
+
+					temp := ss[v.Row+tr][0][v.Col+tc+1]
+					if unicode.IsDigit(rune(temp)) {
+						fmt.Println("CONTINUE:", v.Row, v.Col)
+						inRow = true
 						continue
 					}
-					temp := ss[v.Row+tr][0][v.Col+tc]
-					if unicode.IsDigit(rune(temp)) {
 
-						// fmt.Println("TR:", r+tr, "TC:", c+tc, "\t", string(temp))
+					temp2 := ss[v.Row+tr][0][v.Col+tc]
+					if unicode.IsDigit(rune(temp2)) {
+
+						// fmt.Println("TR:", v.Row+tr, "TC:", v.Col+tc, "\t", string(temp))
 						sposs = append(sposs, poss{v.Row + tr, v.Col + tc})
 					}
 
@@ -107,6 +115,7 @@ func Game2(s []sym, ss [][]string) []poss {
 		}
 	}
 
+	// fmt.Println(sposs)
 	return sposs
 
 }
@@ -115,8 +124,32 @@ func Game3(s []poss, ss [][]string) {
 
 	fmt.Println(s)
 
+	var k []string
 	subs := ss[s[0].Row][0][s[0].Col]
 	fmt.Println(string(subs))
 
-	// Verificar anteriores e posteriores
+	for item := range s {
+		srow := s[item].Row
+		scol := s[item].Col
+		// Verificar anteriores e posteriores
+		for c := 0; c < len(ss[srow][0]); c++ {
+			// fmt.Println(c)
+			if unicode.IsDigit(rune(ss[srow][0][c])) {
+				k = append(k, string(ss[srow][0][c]))
+			}
+
+			if c == scol {
+				fmt.Println("BREKA")
+				break
+			}
+
+			if string(ss[srow][0][c]) == "." {
+				k = nil
+			}
+
+		}
+		// quase, mudar de slice para outra estrutura
+		fmt.Println("K:", k)
+	}
+
 }

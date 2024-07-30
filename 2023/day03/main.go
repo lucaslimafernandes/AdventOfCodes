@@ -8,10 +8,12 @@ import (
 func main() {
 
 	s := utils.ReadFile("test.txt")
-	res1 := part1.Game1(s)
+	// res1 := part1.SymbolsIdentifier(s)
 
-	res2 := part1.Game2(res1, s)
+	// res2 := part1.PossibilitiesIdentifier(res1, s)
 
-	part1.Game3(res2, s)
+	// part1.Game3(res2, s)
+
+	part1.Numbers(s)
 
 }
