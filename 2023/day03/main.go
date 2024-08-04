@@ -14,6 +14,8 @@ func main() {
 
 	// part1.Game3(res2, s)
 
-	part1.Numbers(s)
+	res1 := part1.Numbers(s)
+
+	part1.Checks(res1, s)
 
 }
