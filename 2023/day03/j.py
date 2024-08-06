@@ -3,6 +3,7 @@ def readfile(nome_arq):
 		linhas = f.readlines()
 	return linhas
 
+arr = []
 def monntaNro(i, j):	
 	jini = j
 	str_nro = ''	
@@ -15,7 +16,11 @@ def monntaNro(i, j):
 		str_nro = str(mat[i][j]) + str_nro
 		mat[i][j] = '.'
 		j-=1	
+	
+	# print("str_nro = ", str_nro)
+	arr.append(int(str_nro))
 	return int(str_nro)
+
 
 def day_3_part1():
 
@@ -35,6 +40,8 @@ def day_3_part1():
 
 	print(symbols)
 
+
+
 	for i in range(0,n_linhas):
 		for j in range(0,n_colunas):
 			if mat[i][j] in symbols:				
@@ -53,7 +60,9 @@ def day_3_part1():
 				if j-1 >= 0 and mat[i][j-1].isnumeric():					
 					tot+= monntaNro(i,j-1)				
 				if j+1 < n_colunas and mat[i][j+1].isnumeric():				
-					tot+= monntaNro(i,j+1)				
+					tot+= monntaNro(i,j+1)
+		# print(tot, i)
+
 	print(tot)
 
 def day_3_part2():
@@ -96,14 +105,17 @@ def day_3_part2():
 					tot += nros[0] * nros[1]
 	print(tot)
 
-linhas = readfile("day3_input.txt")			
+linhas = readfile("input.txt")			
+# n_colunas = len(linhas[0])
 n_colunas = len(linhas)
+print(n_colunas)
 n_linhas = len(linhas)
 mat = [[""]*n_colunas for _ in range(n_linhas)]
 day_3_part1()
 
-linhas = readfile("day3_input.txt")
-n_colunas = len(linhas)
-n_linhas = len(linhas)
-mat = [[""]*n_colunas for _ in range(n_linhas)]
-day_3_part2()
+print(sorted(arr))
+# linhas = readfile("input.txt")
+# n_colunas = len(linhas)
+# n_linhas = len(linhas)
+# mat = [[""]*n_colunas for _ in range(n_linhas)]
+# day_3_part2()

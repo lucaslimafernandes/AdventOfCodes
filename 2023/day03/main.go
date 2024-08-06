@@ -7,7 +7,7 @@ import (
 
 func main() {
 
-	s := utils.ReadFile("test.txt")
+	s := utils.ReadFile("input.txt")
 	// res1 := part1.SymbolsIdentifier(s)
 
 	// res2 := part1.PossibilitiesIdentifier(res1, s)
