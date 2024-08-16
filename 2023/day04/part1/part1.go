@@ -5,11 +5,15 @@ import (
 	"strings"
 )
 
-func Sep(s string) {
+func Sep(s []string) {
 
-	// var cardNumber int
+	// var cardNumber []int
 
-	cnTemp := s[len("Card "):strings.Index(s, ":")]
+	// Iter Card numbers
+	for _, cn := range s {
 
-	fmt.Println(cnTemp)
+		cnTemp := cn[len("Card "):strings.Index(cn, ":")]
+		fmt.Println(cnTemp)
+	}
+
 }

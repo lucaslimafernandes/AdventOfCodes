@@ -13,9 +13,6 @@ func main() {
 
 	fmt.Println(s)
 
-	for _, v := range s {
-
-		part1.Sep(v)
-	}
+	part1.Sep(s)
 
 }
